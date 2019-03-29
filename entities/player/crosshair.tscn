@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gfx/crosshair.png" type="Texture" id=1]
+
+[node name="crosshair" type="Node2D"]
+position = Vector2( 72.8502, -11.0151 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0.0568848, -0.10651 )
+texture = ExtResource( 1 )
+

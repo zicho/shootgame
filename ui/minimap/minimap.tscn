@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/minimap/minimap.tres" type="TileSet" id=1]
+[ext_resource path="res://ui/minimap/player_pos.gd" type="Script" id=2]
+[ext_resource path="res://gfx/minimap/current_room.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "marker_blink"
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("player_marker:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="minimap" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 24, 24 )
+format = 1
+
+[node name="player_pos" type="Position2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="pos_camera" type="Camera2D" parent="player_pos"]
+offset = Vector2( 12, 12 )
+current = true
+
+[node name="player_marker" type="Sprite" parent="player_pos"]
+texture = ExtResource( 3 )
+centered = false
+hframes = 4
+frame = 1
+
+[node name="anim" type="AnimationPlayer" parent="player_pos"]
+anims/marker_blink = SubResource( 1 )
+
